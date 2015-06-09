@@ -215,7 +215,7 @@ postTrimReads <- function(){
   
   bsub(wait=paste0("done(BushmanAlignSeqs_", bushmanJobID, ")"),
        jobName=paste0("BushmanCallIntSites_", bushmanJobID, "[", paste(which(successfulTrims), collapse=","), "]"),
-       maxmem=24000, #multihits suck lots of memory
+       maxmem=32000, #multihits suck lots of memory
        logFile="logs/callSitesOutput%I.txt",
        command=paste0("Rscript -e \"source('", codeDir, "/programFlow.R'); callIntSites();\"")
   )
